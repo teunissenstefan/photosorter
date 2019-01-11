@@ -1,0 +1,47 @@
+#windowBar{
+    background-color:lightsteelblue;
+    -webkit-app-region: drag;
+    position:fixed;
+    top:0;
+    right:0;
+    left:0;
+    padding:3px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    user-select:none;
+}
+
+.windowContent{
+    background-color:aliceblue;
+    position:fixed;
+    top:27px;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+.barBtn{
+    -webkit-app-region:no-drag;
+    z-index:9999;
+    position:fixed;
+    top:0;
+    padding:3px 10px 3px 10px;
+    background-color:lightsteelblue;
+    cursor:default;
+}
+
+.barBtnClose{
+    right:0;
+}
+
+.barBtnClose:hover{
+    background-color:maroon!important;
+    color:white;
+}
+
+.barBtnMin{
+    right:29px;
+}
+
+.barBtnMin:hover{
+    background-color:darkgray!important;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>PhotoSorter</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css.css" />
+    <script src="window.js"></script>
+  </head>
+  <body>
+    <div id="windowBar">
+      PhotoSorter
+      <div class="barBtn barBtnClose" onclick="Close()">
+        X
+      </div>
+      <div class="barBtn barBtnMin" onclick="Minimize()">
+        _
+      </div>
+    </div>
+    <!---->
+    <div class="windowContent">
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <h5 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>Move to</span>
+            </h5>
+            <ul class="nav flex-column mb-2" id="foldersListUl">
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <button class="btn btn-outline-danger btn-sm" id="trashBtn">
+                  Move to Trash
+                    </button>
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">PhotoSorter</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="btn-group mr-2">
+                    <button class="btn btn-sm btn-outline-primary">Previous</button>
+                    <button class="btn btn-sm btn-outline-primary">Next</button>
+                </div>
+                </div>
+            </div>     
+            <div style="height:100%;width:100%;">
+                <img id="photoimg" class="img-fluid" src=""/>
+            </div>
+        </main>
+      </div>
+    </div>
+        <!--<div class="row">
+            <div class="col-3 bg-danger">
+
+            </div>
+            <div class="col-9">
+                <img id="photoimg" src=""/>
+            </div>
+        </div>-->
+    </div>
+    <!---->
+    <script>
+      require('./renderer.js')
+    </script>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/popper.js/dist/umd/popper.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+  </body>
+</html>
