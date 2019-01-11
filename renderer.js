@@ -1,4 +1,3 @@
-var baseFolder = '';
 const fs = require('fs');
 const remote = require('electron').remote
 const dialog = remote.dialog;
@@ -9,6 +8,8 @@ trash = require('trash');
 
 var directories = [];
 var filesList = [];
+var baseFolder = '';
+var currentPhotoIndex = 0;
 var currentPhotoFullPath = "";
 var currentPhoto = "";
 
@@ -26,7 +27,10 @@ function Move(file,folder){
 }
 
 function NextPhoto(){
-    filesList.shift();
+    filesList.splice(currentPhotoIndex,1);
+    if(currentPhotoIndex>=filesList.length){
+        currentPhotoIndex--;
+    }
     if(filesList.length>=1){
         LoadPhoto();
     }else{
@@ -41,8 +45,8 @@ function EmptyPhoto(){
 }
 
 function LoadPhoto(){
-    currentPhotoFullPath = baseFolder+"\\"+filesList[0];
-    currentPhoto = filesList[0];
+    currentPhotoFullPath = baseFolder+"\\"+filesList[currentPhotoIndex];
+    currentPhoto = filesList[currentPhotoIndex];
     document.getElementById('photoimg').src = currentPhotoFullPath;
 }
 
@@ -74,14 +78,32 @@ function LoadContents () {
 };
 
 $('body').on('click', '.movetolink', function() {
-    Move(currentPhoto,$(this).attr('data-folder'));
+    if(filesList.length>=1){
+        Move(currentPhoto,$(this).attr('data-folder'));
+    }
+});
+
+$( "#nextBtn" ).click(function() {
+    if(filesList.length>(currentPhotoIndex+1)){
+        currentPhotoIndex++;
+        LoadPhoto();
+    }
+});
+
+$( "#previousBtn" ).click(function() {
+    if(currentPhotoIndex>0){
+        currentPhotoIndex--;
+        LoadPhoto();
+    }
 });
 
 $( "#trashBtn" ).click(function() {
-    if(confirm("Are you sure you want to move this image to the trash can?")){
-        trash(currentPhotoFullPath).then(() => {
-            NextPhoto();
-        });
+    if(filesList.length>=1){
+        if(confirm("Are you sure you want to move this image to the trash can?")){
+            trash(currentPhotoFullPath).then(() => {
+                NextPhoto();
+            });
+        }
     }
 });
 
