@@ -14,8 +14,8 @@ var currentPhotoFullPath = "";
 var currentPhoto = "";
 
 function Move(file,folder){
-    var oldPath = baseFolder+"\\"+file;
-    var newPath = baseFolder+"\\"+folder+"\\"+file;
+    var oldPath = baseFolder+"/"+file;
+    var newPath = baseFolder+"/"+folder+"/"+file;
     // console.log("basefolder:"+baseFolder);
     // console.log("file:"+file);
     // console.log("folder:"+folder);
@@ -45,7 +45,7 @@ function EmptyPhoto(){
 }
 
 function LoadPhoto(){
-    currentPhotoFullPath = baseFolder+"\\"+filesList[currentPhotoIndex];
+    currentPhotoFullPath = baseFolder+"/"+filesList[currentPhotoIndex];
     currentPhoto = filesList[currentPhotoIndex];
     document.getElementById('photoimg').src = currentPhotoFullPath;
 }
@@ -58,7 +58,8 @@ function LoadContents () {
     return new Promise(function(resolve, reject) {
         fs.readdir(baseFolder, (err, files) => {
             files.forEach(file => {
-                fs.stat(baseFolder+"\\"+file,function(err,stats){
+                // console.log(baseFolder+"/"+file);
+                fs.stat(baseFolder+"/"+file,function(err,stats){
                     if(stats.isDirectory()){
                         directories.push(file);
                         var newLi = $("<li class='nav-item'></li>");
