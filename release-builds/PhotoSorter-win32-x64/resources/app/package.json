@@ -1,0 +1,26 @@
+{
+  "name": "PhotoSorter",
+  "version": "1.0.0",
+  "description": "A minimal photo sorting application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [
+    "Photo",
+    "Sorter",
+    "PhotoSorter",
+    "BitSec"
+  ],
+  "author": "BitSec",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^1.7.16"
+  },
+  "dependencies": {
+    "bootstrap": "^4.2.1",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.6",
+    "trash": "^4.3.0"
+  }
+}
